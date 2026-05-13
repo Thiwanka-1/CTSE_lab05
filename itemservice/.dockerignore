@@ -1,0 +1,23 @@
+# Git
+.git
+.gitignore
+
+# Logs
+npm-debug.log*
+*.log
+
+# Environment
+.env
+.env.*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode
+.idea
+
+# NOTE: node_modules is intentionally NOT ignored here.
+# npm install is skipped at build time (no internet access in build env).
+# node_modules are copied from the local machine instead.

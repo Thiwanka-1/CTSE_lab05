@@ -1,0 +1,46 @@
+version: "3.8"
+
+services:
+  itemservice:
+    build: ./itemservice
+    container_name: itemservice
+    ports:
+      - "8081:8081"
+    networks:
+      - microservicesnet
+
+  orderservice:
+    build: ./orderservice
+    container_name: orderservice
+    ports:
+      - "8082:8082"
+    networks:
+      - microservicesnet
+
+  paymentservice:
+    build: ./paymentservice
+    container_name: paymentservice
+    ports:
+      - "8083:8083"
+    networks:
+      - microservicesnet
+
+  apigateway:
+    build: ./apigateway
+    container_name: apigateway
+    ports:
+      - "8080:8080"
+    environment:
+      - ITEM_SERVICE_URL=http://itemservice:8081
+      - ORDER_SERVICE_URL=http://orderservice:8082
+      - PAYMENT_SERVICE_URL=http://paymentservice:8083
+    depends_on:
+      - itemservice
+      - orderservice
+      - paymentservice
+    networks:
+      - microservicesnet
+
+networks:
+  microservicesnet:
+    driver: bridge

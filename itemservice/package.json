@@ -1,0 +1,12 @@
+{
+  "name": "itemservice",
+  "version": "1.0.0",
+  "description": "Item Microservice",
+  "main": "index.js",
+  "scripts": {
+    "start": "node init && node index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
